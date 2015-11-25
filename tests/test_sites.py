@@ -5,12 +5,12 @@
 test_django-rest-admin
 ------------
 
-Tests for `django-rest-admin` models module.
+Tests for `django-rest-admin` sites module.
 """
 
 from django.test import TestCase
 
-from rest_admin import models
+from rest_admin import sites
 
 
 class TestRest_admin(TestCase):
