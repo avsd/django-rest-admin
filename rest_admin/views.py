@@ -1,3 +1,4 @@
+from django.views.generic import TemplateView
 from rest_framework import generics
 from rest_framework.permissions import IsAdminUser
 
@@ -12,3 +13,8 @@ class AdminAppsView(generics.ListAPIView):
 
     def get_queryset(self):
         return site.get_apps(self.request)
+
+
+class AdminIndexView(TemplateView):
+    """Index view rendering base React HTML template by default"""
+    template_name = 'rest_admin/index.html'

@@ -87,7 +87,7 @@ class RestAdminSite(object):
 
         return sorted(filter(lambda itm: itm.models, app_dict.values()), key=lambda itm: itm.name)
 
-    def get_urls(self):
+    def get_api_urls(self):
         from django.conf.urls import url
         from .views import AdminAppsView
         # # Since this module gets imported in the application's root package,
@@ -137,9 +137,33 @@ class RestAdminSite(object):
 
         return urlpatterns
 
+    def get_view_urls(self):
+        from django.conf.urls import url
+        from .views import AdminIndexView
+        return [
+            url('^', AdminIndexView.as_view(), name='index'),
+        ]
+
+    @property
+    def api_urls(self):
+        from django.conf.urls import url, include
+        urlpatterns = [url('^', include(self.get_api_urls(), namespace='api'))]
+        return (urlpatterns, 'rest_admin', self.name)
+
+    @property
+    def view_urls(self):
+        from django.conf.urls import url, include
+        urlpatterns = [url('^', include(self.get_view_urls(), namespace='view'))]
+        return (urlpatterns, 'rest_admin', self.name)
+
     @property
     def urls(self):
-        return self.get_urls(), 'admin', self.name
+        from django.conf.urls import url, include
+        urlpatterns = [
+            url('^api/', include(self.get_api_urls(), namespace='api')),
+            url('^', include(self.get_view_urls(), namespace='view')),
+        ]
+        return (urlpatterns, 'rest_admin', self.name)
 
 
 # To be consistent with Django admin (see `django.contrib.admin.sites`).
