@@ -88,8 +88,14 @@ class RestAdminSite(object):
         return sorted(filter(lambda itm: itm.models, app_dict.values()), key=lambda itm: itm.name)
 
     def get_api_urls(self):
-        from django.conf.urls import url
-        from .views import AdminAppsView
+        from .views import AppsViewSet
+        from rest_framework import routers
+
+        router = routers.DefaultRouter()
+        router.register('apps', AppsViewSet, 'apps')
+
+        return router.urls
+
         # # Since this module gets imported in the application's root package,
         # # it cannot import models from other applications at the module level,
         # # and django.contrib.contenttypes.views imports ContentType.
@@ -103,19 +109,18 @@ class RestAdminSite(object):
         #         return self.admin_view(view, cacheable)(*args, **kwargs)
         #     return update_wrapper(wrapper, view)
 
-        # Admin-site-wide views.
-        urlpatterns = [
-            # url(r'^$', wrap(self.index), name='index'),
-            url(r'^apps', AdminAppsView.as_view(), name='apps'),
-            # url(r'^login/$', self.login, name='login'),
-            # url(r'^logout/$', wrap(self.logout), name='logout'),
-            # url(r'^password_change/$', wrap(self.password_change, cacheable=True), name='password_change'),
-            # url(r'^password_change/done/$', wrap(self.password_change_done, cacheable=True),
-            #     name='password_change_done'),
-            # url(r'^jsi18n/$', wrap(self.i18n_javascript, cacheable=True), name='jsi18n'),
-            # url(r'^r/(?P<content_type_id>\d+)/(?P<object_id>.+)/$', wrap(contenttype_views.shortcut),
-            #     name='view_on_site'),
-        ]
+        # # Admin-site-wide views.
+        # urlpatterns = [
+        #     # url(r'^$', wrap(self.index), name='index'),
+        #     # url(r'^login/$', self.login, name='login'),
+        #     # url(r'^logout/$', wrap(self.logout), name='logout'),
+        #     # url(r'^password_change/$', wrap(self.password_change, cacheable=True), name='password_change'),
+        #     # url(r'^password_change/done/$', wrap(self.password_change_done, cacheable=True),
+        #     #     name='password_change_done'),
+        #     # url(r'^jsi18n/$', wrap(self.i18n_javascript, cacheable=True), name='jsi18n'),
+        #     # url(r'^r/(?P<content_type_id>\d+)/(?P<object_id>.+)/$', wrap(contenttype_views.shortcut),
+        #     #     name='view_on_site'),
+        # ]
 
         # # Add in each model's views, and create a list of valid URLS for the
         # # app_index
@@ -135,13 +140,16 @@ class RestAdminSite(object):
         #         url(regex, wrap(self.app_index), name='app_list'),
         #     ]
 
-        return urlpatterns
+        # return urlpatterns
 
-    def get_view_urls(self):
+    def get_schema_urls(self):
+        return []  # TODO
+
+    def get_index_urls(self):
         from django.conf.urls import url
         from .views import AdminIndexView
         return [
-            url('^', AdminIndexView.as_view(), name='index'),
+            url('^$', AdminIndexView.as_view(), name='index'),
         ]
 
     @property
@@ -151,9 +159,14 @@ class RestAdminSite(object):
         return (urlpatterns, 'rest_admin', self.name)
 
     @property
-    def view_urls(self):
+    def schema_urls(self):
         from django.conf.urls import url, include
-        urlpatterns = [url('^', include(self.get_view_urls(), namespace='view'))]
+        urlpatterns = [url('^', include(self.get_schema_urls(), namespace='schema'))]
+        return (urlpatterns, 'rest_admin', self.name)
+
+    @property
+    def index_urls(self):
+        urlpatterns = self.get_index_urls()
         return (urlpatterns, 'rest_admin', self.name)
 
     @property
@@ -161,7 +174,8 @@ class RestAdminSite(object):
         from django.conf.urls import url, include
         urlpatterns = [
             url('^api/', include(self.get_api_urls(), namespace='api')),
-            url('^', include(self.get_view_urls(), namespace='view')),
+            url('^schema/', include(self.get_schema_urls(), namespace='schema')),
+            url('^', include(self.get_index_urls())),
         ]
         return (urlpatterns, 'rest_admin', self.name)
 
