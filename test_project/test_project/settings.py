@@ -38,6 +38,7 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
+    'static_precompiler',
     'rest_framework',
     'rest_admin',
 )
@@ -103,3 +104,18 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.8/howto/static-files/
 
 STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATICFILES_FINDERS = [
+    # Default:
+    "django.contrib.staticfiles.finders.FileSystemFinder",
+    "django.contrib.staticfiles.finders.AppDirectoriesFinder",
+
+    # Static precompiler (for Babel)
+    'static_precompiler.finders.StaticPrecompilerFinder',
+]
+STATIC_PRECOMPILER_COMPILERS = (
+    ('static_precompiler.compilers.Browserify', {
+        # 'executable': '/usr/bin/babel',
+        'transform': '[ babelify --presets=es2015,react,stage-0 ]'
+    }),
+)

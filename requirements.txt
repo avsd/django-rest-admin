@@ -1,2 +1,4 @@
 django>=1.8.0
 # Additional requirements go here
+
+-e git+git@github.com:avsd/django-static-precompiler.git@add_browserify#egg=django-static-precompiler

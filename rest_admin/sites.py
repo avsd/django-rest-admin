@@ -143,7 +143,14 @@ class RestAdminSite(object):
         # return urlpatterns
 
     def get_schema_urls(self):
-        return []  # TODO
+        from django.conf.urls import url
+        from django.views.generic import RedirectView, TemplateView
+        return [
+            url('^$', RedirectView.as_view(url='/', permanent=False), name='schema-root'),
+            url('^index.jsx',
+                TemplateView.as_view(template_name='rest_admin/schema/index.jsx', content_type='text/jsx'),
+                name='index'),
+        ]  # TODO
 
     def get_index_urls(self):
         from django.conf.urls import url

@@ -3,6 +3,11 @@
 
 {% block extrastyle %}{{ block.super }}<link rel="stylesheet" type="text/css" href="{% static "admin/css/dashboard.css" %}" />{% endblock %}
 
+{% block extrahead %}
+<script src="{% static 'js/es6-module-loader/es6-module-loader-dev.src.js' %}"></script>
+<script src="{% url 'rest_admin:schema:index' %}?compiled"></script>
+{% endblock extrahead %}
+
 {% block bodyclass %}{{ block.super }} dashboard{% endblock %}
 
 {% block breadcrumbs %}{% endblock %}
