@@ -1,0 +1,27 @@
+{
+  "name": "django-rest-admin",
+  "version": "1.0.0",
+  "description": "============================= django-rest-admin =============================",
+  "main": "system.js",
+  "directories": {
+    "doc": "docs",
+    "test": "tests"
+  },
+  "dependencies": {
+    "babel": "^6.3.26"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/avsd/django-rest-admin.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/avsd/django-rest-admin/issues"
+  },
+  "homepage": "https://github.com/avsd/django-rest-admin#readme"
+}
