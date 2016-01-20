@@ -4,18 +4,17 @@
 import os
 import sys
 
-import rest_admin
+version = '0.1.0'
+
 
 try:
     from setuptools import setup
 except ImportError:
     from distutils.core import setup
 
-version = rest_admin.__version__
-
 if sys.argv[-1] == 'publish':
     try:
-        import wheel
+        import wheel  # noqa
     except ImportError:
         print('Wheel library missing. Please run "pip install wheel"')
         sys.exit()
