@@ -2,7 +2,7 @@ from django.views.generic import TemplateView
 from rest_framework import viewsets, mixins
 from rest_framework.permissions import IsAdminUser
 
-from . import site
+from .sites import site
 from .serializers import AdminAppSerializer
 
 
