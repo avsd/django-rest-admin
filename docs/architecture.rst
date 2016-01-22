@@ -12,4 +12,4 @@ The API layer and the part of Schema implementation responsible for extracting a
 are stand-alone. The Static front-end layer and the part of Schema implementation responsible
 for rendering the schema are plugin-based.
 
-.. image:: img/architecture.svg
+.. image:: img/architecture.png
