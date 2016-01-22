@@ -18,7 +18,7 @@ Supports other front-end frameworks via plugins.
 
 **Choose front-end framework from a number of available plugins.**
   ... or write your own! RESTful Django Admin comes with flexible plugin-based
-  architecture. By default React is used, but the front-end can be easily written
+  architecture. By default React is used as a front-end, but it can be easily written
   in Angular, Ember or any other framework.
 
 **Re-usable API and Front-end Schema that play well together.**
