@@ -3,4 +3,5 @@ include CONTRIBUTING.rst
 include HISTORY.rst
 include LICENSE
 include README.rst
+include rest_admin/version.txt
 recursive-include rest_admin *.html *.png *.gif *js *.css *jpg *jpeg *svg *py
