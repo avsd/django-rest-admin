@@ -8,7 +8,8 @@ django-rest-admin
 .. image:: https://travis-ci.org/avsd/django-rest-admin.png?branch=master
     :target: https://travis-ci.org/avsd/django-rest-admin
 
-Single-page Django Admin using django-reset-framework and React
+Single-page Django Admin using django-reset-framework, React,
+and other front-end frameworks via plugins.
 
 Documentation
 -------------
