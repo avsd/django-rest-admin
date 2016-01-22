@@ -4,7 +4,8 @@
 import os
 import sys
 
-version = '0.1.0'
+with open(os.path.join(os.path.dirname(os.path.abspath(__file__)), 'rest_admin', 'version.txt')) as f:
+    version = f.read().strip()
 
 
 try:

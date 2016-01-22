@@ -12,7 +12,7 @@ Contents:
    :maxdepth: 2
 
    readme
-   architecture
+   design
    contributing
    authors
    history

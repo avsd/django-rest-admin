@@ -1,6 +1,6 @@
-====================================
-API-Driven Django Admin Architecture
-====================================
+=============
+System Design
+=============
 
 There are 3 independent layers forming interface of the system:
 
@@ -12,7 +12,7 @@ The API layer and the part of Schema implementation responsible for extracting a
 are stand-alone. The Static front-end layer and the part of Schema implementation responsible
 for rendering the schema are plugin-based.
 
-.. image:: img/architecture.png
+.. image:: img/design.png
 
 Django Rest Admin is designed for maximum reusability. It uses exactly the same declarative
 syntax as the built-in Django admin. ``ModelAdmin`` classes are used to generate both API
