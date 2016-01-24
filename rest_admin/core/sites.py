@@ -148,8 +148,15 @@ class RestAdminSite(object):
         return [
             url('^$', RedirectView.as_view(url='/', permanent=False), name='schema-root'),
             url('^index.jsx',
-                TemplateView.as_view(template_name='rest_admin/schema/index.jsx', content_type='text/jsx'),
+                TemplateView.as_view(
+                    template_name='rest_admin_react/index.jsx',
+                    content_type='text/jsx'),
                 name='index'),
+            url('^index.js',
+                TemplateView.as_view(
+                    template_name='rest_admin_react/compiled/index.js',
+                    content_type='text/javascript'),
+                name='index-compiled'),
         ]  # TODO
 
     def get_index_urls(self):

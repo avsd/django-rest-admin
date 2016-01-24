@@ -1,0 +1,32 @@
+{
+  "name": "django-rest-admin",
+  "version": "0.1.0",
+  "description": "Front-end from RESTful Django Admin",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs",
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/avsd/django-rest-admin.git"
+  },
+  "author": "David Avsajanishvili",
+  "license": "SEE LICENSE IN ./LICENSE",
+  "bugs": {
+    "url": "https://github.com/avsd/django-rest-admin/issues"
+  },
+  "homepage": "https://github.com/avsd/django-rest-admin#readme",
+  "devDependencies": {
+    "babel-preset-es2015": "^6.3.13",
+    "babel-preset-react": "^6.3.13",
+    "babel-preset-stage-0": "^6.3.13",
+    "gulp": "^3.9.0",
+    "gulp-babel": "^6.1.1",
+    "react": "^0.14.6",
+    "react-dom": "^0.14.6"
+  }
+}
