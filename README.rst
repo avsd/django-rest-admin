@@ -32,47 +32,47 @@ This project is still WIP. Please,
 `get in touch <mailto:david@davidavs.com?subject=RESTful%20Django%20Admin>`_
 if you want to help!
 
-Documentation
--------------
-
-The full documentation is at https://django-rest-admin.readthedocs.org.
-
-Quickstart
-----------
-
-Install django-rest-admin::
-
-    pip install django-rest-admin
-
-Then use it in a project::
-
-    import rest_admin
-
-TODO
-
 Features
 --------
 
 * TODO
 
-Running Tests
---------------
+..  Documentation
+    -------------
+    
+    The full documentation is at https://django-rest-admin.readthedocs.org.
+    
+    Quickstart
+    ----------
+    
+    Install django-rest-admin::
+    
+        pip install django-rest-admin
+    
+    Then use it in a project::
+    
+        import rest_admin
+    
+    TODO
+    
+    Running Tests
+    --------------
+    
+    Does the code actually work?
+    
+    ::
+    
+        source <YOURVIRTUALENV>/bin/activate
+        (myenv) $ pip install -r requirements-text.txt
+        (myenv) $ python runtests.py
 
-Does the code actually work?
-
-::
-
-    source <YOURVIRTUALENV>/bin/activate
-    (myenv) $ pip install -r requirements-text.txt
-    (myenv) $ python runtests.py
-
-Credits
----------
-
-Tools used in rendering this package:
-
-*  Cookiecutter_
-*  `cookiecutter-pypackage`_
-
-.. _Cookiecutter: https://github.com/audreyr/cookiecutter
-.. _`cookiecutter-pypackage`: https://github.com/pydanny/cookiecutter-djangopackage
+..  Credits
+    ---------
+    
+    Tools used in rendering this package:
+    
+    *  Cookiecutter_
+    *  `cookiecutter-pypackage`_
+    
+    .. _Cookiecutter: https://github.com/audreyr/cookiecutter
+    .. _`cookiecutter-pypackage`: https://github.com/pydanny/cookiecutter-djangopackage
