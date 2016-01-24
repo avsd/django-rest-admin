@@ -1,5 +1,5 @@
 =============================
-RESTful Django Admin
+RESTful Django Admin - WIP
 =============================
 
 .. .. image:: https://badge.fury.io/py/django-rest-admin.png
@@ -27,6 +27,10 @@ Supports other front-end frameworks via plugins.
   in your project. You can use it not only for admin site, but also for prototyping
   the front-end! Just copy&paste auto-generated code fragments and use them
   together with the auto-generated API.
+
+This project is still WIP. Please,
+`get in touch <mailto:david@davidavs.com?subject=RESTful%20Django%20Admin>`_
+if you want to help!
 
 Documentation
 -------------
