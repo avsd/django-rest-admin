@@ -4,8 +4,10 @@
 {% block extrastyle %}{{ block.super }}<link rel="stylesheet" type="text/css" href="{% static "admin/css/dashboard.css" %}" />{% endblock %}
 
 {% block extrahead %}
-<script src="{% static 'js/es6-module-loader/es6-module-loader-dev.src.js' %}"></script>
-<script src="{% url 'rest_admin:schema:index-compiled' %}"></script>
+<script>
+  DJANGO_REST_API_URL = '{% url "rest_admin:api:api-root" %}';
+</script>
+<script src="{% static 'rest_admin_react/es5/bundle.js' %}"></script>
 {% endblock extrahead %}
 
 {% block bodyclass %}{{ block.super }} dashboard{% endblock %}

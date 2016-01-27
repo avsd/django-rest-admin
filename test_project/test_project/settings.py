@@ -40,6 +40,8 @@ INSTALLED_APPS = (
 
     'rest_framework',
     'rest_admin',
+    'rest_admin.plugins.react',
+    'testapp',
 )
 
 MIDDLEWARE_CLASSES = (

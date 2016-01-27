@@ -66,7 +66,7 @@ class DjangoApp(object):
         return any(filter(lambda itm: itm.module_perms, self._models))
 
 
-class RestAdminSite(object):
+class AdminSite(object):
     """Django REST Admin site"""
 
     def __init__(self, admin_site, name='rest_admin'):
@@ -74,7 +74,13 @@ class RestAdminSite(object):
         self.admin_site = admin_site
 
     def get_apps(self, request):
-        """Returns list of apps"""
+        """
+        Converts a dictionary of registered admin instances to the dictionary
+        of ``DjangoApp`` instances.
+
+        The admin instances are extracted from `django.contrib.admin.sites.AdminSite` instance.
+
+        """
         app_dict = {}
         for model, model_admin in self.admin_site._registry.items():
             app_label = model._meta.app_label
@@ -88,6 +94,9 @@ class RestAdminSite(object):
         return sorted(filter(lambda itm: itm.models, app_dict.values()), key=lambda itm: itm.name)
 
     def get_api_urls(self):
+        """
+        Returns API urls created using Django REST Framework.
+        """
         from .views import AppsViewSet
         from rest_framework import routers
 
@@ -197,4 +206,4 @@ class RestAdminSite(object):
 # To be consistent with Django admin (see `django.contrib.admin.sites`).
 # This global object represents the default admin site, for the common case.
 # You can instantiate AdminSite in your own code to create a custom admin site.
-site = RestAdminSite(django_admin_sites.site)
+site = AdminSite(django_admin_sites.site)
